@@ -19,5 +19,24 @@ function criarCobrinha () {
     }
 }
 
-criarBG();
-criarCobrinha();
+function iniciarJogo(){
+    criarBG();
+    criarCobrinha();
+
+    let snakeX = snake[0].x; //posição para ponto de partida
+    let snakeY = snake[0].y;
+
+    if(direction == "right") snakeX += box;//acrescentado quadrados coordenadas//
+    if(direction == "left") snakeX -= box;
+    if(direction == "up") snakeY -= box;
+    if (direction == "dow") snakeY += box;
+    snake.pop();
+
+    let newHead = { //metodo para acrescentar elemento
+        x: snakeX,
+        y: snakeY,
+
+    }
+    snake.unshift(newHead);
+}
+let jogo = setInterval(iniciarJogo, 100); //para iniciar jogo//
